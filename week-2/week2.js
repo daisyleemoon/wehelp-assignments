@@ -1,6 +1,7 @@
 //要求一
 function calculate(min, max) {
   return console.log(((min + max) * (max - min + 1)) / 2);
+
   // solution ver.1 can work, but is not efficiency
   // let arrA = [];
   // for (i = min; i < max + 1; i++) {
