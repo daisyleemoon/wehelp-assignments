@@ -1,7 +1,7 @@
 //要求一
 function calculate(min, max) {
   return console.log(((min + max) * (max - min + 1)) / 2);
-
+  // solution ver.1 can work, but is not efficiency
   // let arrA = [];
   // for (i = min; i < max + 1; i++) {
   //   arrA.push(i);
@@ -15,8 +15,8 @@ function calculate(min, max) {
 calculate(1, 3); // 你的程式要能夠計算 1+2+3，最後印出 6
 calculate(4, 8); // 你的程式要能夠計算 4+5+6+7+8，最後印出 30
 
+// proof f(((min + max) * (max - min + 1)) / 2) can work
 // x..y
-// -5..10
 // == (X..-1) + (1..Y)
 // == (x-1)*(-x)/2 + (y+1)*y/2
 // == (-x^2+x+y^2+y)/2
@@ -24,30 +24,35 @@ calculate(4, 8); // 你的程式要能夠計算 4+5+6+7+8，最後印出 30
 
 //要求二
 function avg(data) {
-  let accountInfo = data;
   let totalSalary = 0;
-
-  for (i = 0; i < accountInfo.employees.length; i++) {
-    totalSalary += accountInfo.employees[i].salary;
+  for (i = 0; i < data.employees.length; i++) {
+    totalSalary += data.employees[i].salary;
   }
-  let avgSalary = totalSalary / accountInfo.employees.length;
+  let avgSalary = totalSalary / data.employees.length;
   return console.log(avgSalary);
 }
 
-function avg2(data) {
-  let totalSalary = 0;
-  data.employees.forEach((employee) => {
-    totalSalary += employee.salary;
-  });
-}
+//use forEach or reduce find the solution
+// function avg(data) {
+//   let totalSalary = 0;
+//   data.employees.forEach((employee) => {
+//     totalSalary += employee.salary;
+//   });
+//   console.log(totalSalary / data.employees.length);
+// }
 
-function avg3(data) {
-  return (
-    data.employees.reduce((totalSalary, employee) => {
-      totalSalary += employee.salary;
-    }, 0) / data.count
-  );
-}
+// function avg(data) {
+//   if (data.count != data.employees.length) {
+//     return "acccount information invalid";
+//   } else {
+//     avgSalary =
+//       data.employees.reduce((totalSalary, employee) => {
+//         totalSalary += employee.salary;
+//         return totalSalary;
+//       }, 0) / data.count;
+//   }
+//   console.log(avgSalary);
+// }
 
 avg({
   count: 3,
@@ -113,16 +118,63 @@ maxProduct([-1, -2, 0]); // 得到 2
 //要求四
 
 function twoSum(nums, target) {
-  for (let i = 0; i < nums.length; i++) {
-    let diff = target - nums[i];
-    for (let j = i + 1; j < nums.length; j++) {
-      if (diff == nums[j]) {
-        return `[${i}, ${j}]`;
-      }
+  let copyNums = Array.from(nums);
+  copyNums.sort((a, b) => a - b);
+  let head = copyNums[0];
+  let tail = copyNums[copyNums.length - 1];
+
+  while (copyNums.indexOf(tail) - copyNums.indexOf(head) > 1) {
+    if (head + tail > target) {
+      tail = copyNums[copyNums.indexOf(tail) - 1];
+    }
+    if (head + tail < target) {
+      head = copyNums[copyNums.indexOf(head) + 1];
+    }
+    if (head + tail == target) {
+      [head, tail] = [head, tail];
     }
   }
-  return "not match";
+  if (head + tail == target) {
+    return [nums.indexOf(head), nums.indexOf(tail)];
+  } else return "not match";
+
+  // solution ver.1
+  // for (let i = 0; i < nums.length; i++) {
+  //   let diff = target - nums[i];
+  //   for (let j = i + 1; j < nums.length; j++) {
+  //     if (diff == nums[j]) {
+  //       return `[${i}, ${j}]`;
+  //     }
+  //   }
+  // }
+  // return "not match";
 }
 
 let result = twoSum([2, 11, 7, 15], 9);
 console.log(result); // show [0, 2] because nums[0]+nums[2] is 9
+
+//要求五
+function maxZeros(nums) {
+  let counter = 0;
+  let maxLength = 0;
+
+  nums.forEach((num) => {
+    if (num == 0) {
+      counter++;
+      if (counter > maxLength) {
+        maxLength = counter;
+      }
+    }
+    if (num == 1) {
+      counter = 0;
+    }
+
+    return maxLength;
+  });
+  console.log(maxLength);
+}
+
+maxZeros([0, 1, 0, 0]); // 得到 2
+maxZeros([1, 0, 0, 0, 0, 1, 0, 1, 0, 0]); // 得到 4
+maxZeros([1, 1, 1, 1, 1]); // 得到 0
+maxZeros([0, 0, 0, 1, 1]); // 得到 3
