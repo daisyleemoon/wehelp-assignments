@@ -8,161 +8,45 @@
   <body>
     <header>
       <p class="home">My WebSite</p>
+      <nav>
+        <img
+          onclick="showMenu()"
+          alt=""
+          src="image/menu_icon.png"
+          width="25"
+          height="25"
+        />
+        <ul id="navbar">
+          <li>
+            <a href="">Item1</a>
+          </li>
+          <li>
+            <a href="">Item2</a>
+          </li>
+          <li>
+            <a href="">Item3</a>
+          </li>
+          <li>
+            <a href="">Item4</a>
+          </li>
+        </ul>
+      </nav>
     </header>
-    <nav>
-      <img
-        onclick="showMenu()"
-        alt=""
-        src="image/menu_icon.png"
-        width="25"
-        height="25"
-      />
-      <ul id="navbar">
-        <li>
-          <a href="">Item1</a>
-        </li>
-        <li>
-          <a href="">Item2</a>
-        </li>
-        <li>
-          <a href="">Item3</a>
-        </li>
-        <li>
-          <a href="">Item4</a>
-        </li>
-      </ul>
-    </nav>
     <main>
       <p>Welcome to My WebSite</p>
     </main>
     <section>
-      <div class="photoBox">
-        <div class="photoCard">
-          <img alt="" src="./image/pic8.jpg" />
-          <p>
-            Photo by
-            <a
-              href="https://unsplash.com/@sincerelymedia?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-              >Sincerely Media</a
-            >
-            on
-            <a
-              href="https://unsplash.com/s/photos/new-year?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-              >Unsplash</a
-            >
-          </p>
-        </div>
-        <div class="photoCard">
-          <img alt="" src="./image/pic1.jpg" />
-          <p>
-            Photo by
-            <a
-              href="https://unsplash.com/@zerotake?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-              >zero take</a
-            >
-            on
-            <a
-              href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-              >Unsplash</a
-            >
-          </p>
-        </div>
-        <div class="photoCard">
-          <img alt="" src="./image/pic2.jpg" />
-          <p>
-            Photo by
-            <a
-              href="https://unsplash.com/@zerotake?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-              >zero take</a
-            >
-            on
-            <a
-              href="https://unsplash.com/@zerotake?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-              >Unsplash</a
-            >
-          </p>
-        </div>
-        <div class="photoCard">
-          <img alt="" src="./image/pic3.jpg" />
-          <p>
-            Photo by
-            <a
-              href="https://unsplash.com/@clemensvanlay?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-              >Clemens van Lay</a
-            >
-            on
-            <a
-              href="https://unsplash.com/s/photos/new-year?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-              >Unsplash</a
-            >
-          </p>
-        </div>
-        <div class="photoCard">
-          <img alt="" src="./image/pic4.jpg" />
-          <p>
-            Photo by
-            <a
-              href="https://unsplash.com/@kronemberger?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-              >Isabela Kronemberger</a
-            >
-            on
-            <a
-              href="https://unsplash.com/s/photos/new-year?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-              >Unsplash</a
-            >
-          </p>
-        </div>
-        <div class="photoCard">
-          <img alt="" src="./image/pic5.jpg" />
-          <p>
-            Photo by
-            <a
-              href="https://unsplash.com/@timmossholder?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-              >Tim Mossholder</a
-            >
-            on
-            <a
-              href="https://unsplash.com/s/photos/new-year?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-              >Unsplash</a
-            >
-          </p>
-        </div>
-        <div class="photoCard">
-          <img alt="" src="./image/pic6.jpg" />
-          <p>
-            Photo by
-            <a
-              href="https://unsplash.com/@mokngr?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-              >Moritz Knöringer</a
-            >
-            on
-            <a
-              href="https://unsplash.com/s/photos/new-year?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-              >Unsplash</a
-            >
-          </p>
-        </div>
-        <div class="photoCard">
-          <img alt="" src="./image/pic7.jpg" />
-          <p>
-            Photo by
-            <a
-              href="https://unsplash.com/@kellysikkema?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-              >Kelly Sikkema</a
-            >
-            on
-            <a
-              href="https://unsplash.com/s/photos/new-year?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-              >Unsplash</a
-            >
-          </p>
-        </div>
-      </div>
+      <div id="photoBox" class="photoBox"></div>
     </section>
-    <script>
-      const showMenu = () => {
-        document.getElementById("navbar").classList.toggle("dropdown");
-      };
-    </script>
+    <div class="buttonDiv">
+      <input
+        id="loadButton"
+        type="button"
+        value="Load More"
+        class="loadBut"
+        onclick="addCards()"
+      />
+    </div>
+    <script src="script.js"></script>
   </body>
 </html>

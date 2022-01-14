@@ -1,18 +1,24 @@
 body {
   font-size: 20px;
 }
+
+header {
+  display: grid;
+  grid-template-columns: 110px auto;
+  grid-auto-flow: row;
+}
 nav {
   margin: 0;
   padding: 0;
-  display: block;
+  display: subgrid;
+  justify-items: end;
+  align-items: center;
 }
 
 .home {
-  display: inline;
-  float: left;
+  display: block;
   text-align: left;
-  position: absolute;
-  top: 0%;
+  justify-items: start;
 }
 
 ul {
@@ -25,6 +31,7 @@ ul {
 li a {
   padding: 0px 14px 0px 14px;
   text-align: center;
+  background-color: transparent;
 }
 
 main {
@@ -49,12 +56,30 @@ img {
   padding: 0;
   margin: 0;
 }
+
 nav img {
   display: none;
 }
 
 .photoCard {
   text-align: center;
+  background-color: beige;
+}
+
+.buttonDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loadBut {
+  display: flex;
+  border: transparent;
+  width: 180px;
+  height: 50px;
+  font-size: 1rem;
+  align-items: center;
+  justify-content: center;
   background-color: beige;
 }
 
@@ -134,9 +159,12 @@ nav img {
     margin: 10px 20px 10px 20px;
   }
 
-  .dropdown {
-    display: block;
+  .ulMenu {
+    display: grid;
+    grid-auto-columns: 1fr 1fr 1fr 1fr;
+    grid-row-gap: 10px;
     position: absolute;
+    text-align: center;
     z-index: 1;
     right: 0;
     top: 40px;
