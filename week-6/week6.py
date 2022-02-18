@@ -16,11 +16,13 @@ def exam_username(db, username):
     select_username = "SELECT member.username FROM member WHERE member.username = %s"
     cursor = db.cursor()
     cursor.execute(select_username, [username])
-    for user in cursor:
-        return True
+    result = False
+    for user in db.cursor:
+        if user:
+            result = True
     cursor.close()
     db.close
-    return False
+    return result
 
 
 def signup_user(db, name, username, password):
@@ -37,14 +39,15 @@ def authenticate_member(db, username, password):
     select_member = "SELECT name, username, password FROM member WHERE username = %s"
     cursor = db.cursor()
     cursor.execute(select_member, [username])
-    for name, username, hashed in cursor:
+    result = False
+    for name, username, hashed in db.cursor:
         if bcrypt.checkpw(password.encode("utf-8"), hashed.encode()):
-            return name
+            result = name
         else:
-            return False
+            result = False
     cursor.close()
     db.close
-    return False
+    return result
 
 
 @app.route("/")

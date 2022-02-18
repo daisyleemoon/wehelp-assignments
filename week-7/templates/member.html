@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Week-7 Member</title>
+    <link rel="icon" type="image/x-icon" href="/image/favicon.ico" />
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>歡迎光臨，這是會員頁</h1>
+    </header>
+    <section>
+      <p id="singInText">
+        恭喜您
+        <span id="currentName">{{member}}</span>
+        成功登入系統
+      </p>
+      <a href="http://127.0.0.1:3000/signout">登出系統</a>
+    </section>
+    <section>
+      <h2 class="serchName">查詢會員姓名</h2>
+      <input type="text" id="serchNameInput" />
+      <input type="button" onclick="onSerch()" id="serchButton" value="查詢" />
+      <p id="serchNameResult"></p>
+    </section>
+    <section>
+      <h2 class="updateName">更新我的姓名</h2>
+      <input type="text" id="updateNameInput" />
+      <input
+        type="button"
+        onclick="updateName()"
+        id="updateButton"
+        value="更新"
+      />
+      <p id="updateNameResult"></p>
+    </section>
+    <script src="/js/script.js"></script>
+  </body>
+</html>
